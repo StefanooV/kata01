@@ -67,6 +67,11 @@ class FeatureFlagSystem {
             }
         }
     }
+
+    // Obtener el estado actual de todos los valores asignados
+    getAssignedFlags() {
+        return this.userFlags;
+    }
 }
 
 // Creamos una instancia del sistema de Feature Flags
@@ -86,6 +91,7 @@ featureFlags.addFlag('featureB', [
 const userIdInput = document.getElementById('userId');
 const flagSelect = document.getElementById('flagName');
 const resultText = document.getElementById('result');
+const assignedFlagsDiv = document.getElementById('assignedFlags');
 const getFlagButton = document.getElementById('getFlag');
 
 // Evento al hacer clic en el botón para obtener el valor del flag
@@ -98,9 +104,26 @@ getFlagButton.addEventListener('click', () => {
         const result = featureFlags.getFlagForUser(flagName, userId);
         // Mostrar el resultado en la página
         resultText.textContent = `Usuario ${userId} recibe el valor: ${result}`;
+
+        // Actualizar el div con los valores asignados
+        updateAssignedFlagsDisplay();
     } else {
         // Si no se ha ingresado un usuario válido, mostramos un mensaje de error
         resultText.textContent = 'Por favor, ingrese un ID de usuario válido y seleccione un flag.';
     }
 });
 
+// Función para actualizar la visualización de los valores asignados
+function updateAssignedFlagsDisplay() {
+    const assignedFlags = featureFlags.getAssignedFlags();
+    assignedFlagsDiv.innerHTML = ''; // Limpiamos el contenido actual
+
+    // Iteramos sobre los flags asignados y los mostramos
+    for (const key in assignedFlags) {
+        const [userId, flagName] = key.split('-');
+        const value = assignedFlags[key];
+        const div = document.createElement('div');
+        div.textContent = `Usuario ${userId} - Flag ${flagName}: ${value}`;
+        assignedFlagsDiv.appendChild(div);
+    }
+}
