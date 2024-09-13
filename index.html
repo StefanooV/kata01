@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Feature Flags</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Sistema de Feature Flags</h1>
+    <div>
+        <label for="userId">Usuario:</label>
+        <input type="number" id="userId" min="1" />
+    </div>
+    <div>
+        <label for="flagName">Feature Flag:</label>
+        <select id="flagName">
+            <option value="featureA">Feature A (Round Robin)</option>
+            <option value="featureB">Feature B (Random Weight)</option>
+        </select>
+    </div>
+    <button id="getFlag">Obtener Valor</button>
+
+    <h3>Resultado:</h3>
+    <p id="result"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 ### kata1
+
 ##Feature Flags: Son una técnica que permite habilitar o deshabilitar características específicas del software sin necesidad de cambiar el código fuente o realizar un nuevo despliegue. Permiten la activación de funcionalidades de manera dinámica para diferentes usuarios o entornos.
 
 ##Round Robin: Es un método de decisión que rota de manera cíclica a través de una lista de opciones. Si tienes opciones A, B y C, el primer cliente obtiene A, el segundo B, el tercero C, y luego el cuarto volverá a A, y así sucesivamente.
